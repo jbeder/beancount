@@ -314,6 +314,9 @@ PyMODINIT_FUNC PyInit__parser(void)
         goto error;
     }
 
+    /* Initialize lexer imports. */
+    yylex_import();
+
 #define SETATTR(module, name, value)                       \
     if (!value) {                                          \
         goto error;                                        \

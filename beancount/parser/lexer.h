@@ -9,6 +9,11 @@
 typedef struct _yyextra_t yyextra_t;
 
 /**
+ * Initialize header imports.
+ */
+void yylex_import(void);
+
+/**
  * Allocate a new scanner object including private data.
  *
  * This encapsulates the native yylex_init_extra() API.
@@ -36,7 +41,7 @@ yyscan_t yylex_free(yyscan_t scanner);
  */
 void yylex_initialize(PyObject* file, PyObject* filename, int lineno, const char* encoding, yyscan_t scanner);
 
-#line 40 "beancount/parser/lexer.h"
+#line 45 "beancount/parser/lexer.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -549,9 +554,9 @@ extern int yylex \
 #undef yyTABLES_NAME
 #endif
 
-#line 338 "beancount/parser/lexer.l"
+#line 346 "beancount/parser/lexer.l"
 
 
-#line 556 "beancount/parser/lexer.h"
+#line 561 "beancount/parser/lexer.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */

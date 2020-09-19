@@ -310,11 +310,26 @@ py_test(
     ],
 )
 
+cc_library(
+    name = "tokens_c",
+    hdrs = [
+        "tokens.h",
+    ],
+    srcs = ["tokens.c"],
+    deps = [
+        ":decimal_c",
+        ":grammar_hdr",
+        "@local_config_python//:python_headers",
+    ],
+)
+
 cc_test(
     name = "tokens_test",
     srcs = ["tokens_test.c"],
+    linkstatic = 1,
     deps = [
         ":lexer_hdr",
+        ":tokens_c",
         "@local_config_python//:python_headers",
     ],
 )
@@ -352,6 +367,7 @@ py_extension(
         ":grammar_c",
         ":lexer_c",
         ":decimal_c",
+        ":tokens_c",
         "@local_config_python//:python_headers",
     ],
 )

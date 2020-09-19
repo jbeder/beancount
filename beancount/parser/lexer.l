@@ -23,6 +23,11 @@
 typedef struct _yyextra_t yyextra_t;
 
 /**
+ * Initialize header imports.
+ */
+void yylex_import(void);
+
+/**
  * Allocate a new scanner object including private data.
  *
  * This encapsulates the native yylex_init_extra() API.
@@ -58,6 +63,9 @@ void yylex_initialize(PyObject* file, PyObject* filename, int lineno, const char
 #include <math.h>
 #include <stdlib.h>
 #include <stdarg.h>
+
+// Note: From Python.
+#include <datetime.h>
 
 #include "beancount/parser/grammar.h"
 #include "beancount/parser/tokens.h"
@@ -336,6 +344,13 @@ NULL		{
 
 %% /* User Code */
 
+/* Initialize global imports. */
+void yylex_import(void)
+{
+    PyDateTime_IMPORT;
+    PyDecimal_IMPORT;
+}
+
 yyscan_t yylex_new(void)
 {
     yyscan_t scanner;
@@ -352,9 +367,6 @@ yyscan_t yylex_new(void)
         free(extra);
         return NULL;
     }
-
-    PyDateTime_IMPORT;
-    PyDecimal_IMPORT;
 
     return scanner;
 }
