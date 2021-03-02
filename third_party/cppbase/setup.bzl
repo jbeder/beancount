@@ -26,9 +26,11 @@ def setup_absl():
         # 2020-05-08
         http_archive(
             name = "com_google_absl",
-            url = "https://github.com/abseil/abseil-cpp/archive/c45d1c09d517e145d722e00deea9be6c8be8dd57.tar.gz",
-            sha256 = "29b3781679d58af5f26d5a889b9710ade67b7b259f198d3a5025ca7b014b5789",
-            strip_prefix = "abseil-cpp-c45d1c09d517e145d722e00deea9be6c8be8dd57",
+            urls = [
+"https://github.com/abseil/abseil-cpp/archive/6f9d96a1f41439ac172ee2ef7ccd8edf0e5d068c.tar.gz",
+            ],
+            sha256 = "62c27e7a633e965a2f40ff16b487c3b778eae440bab64cad83b34ef1cbe3aa93",
+            strip_prefix = "abseil-cpp-6f9d96a1f41439ac172ee2ef7ccd8edf0e5d068c",
         )
 
 
